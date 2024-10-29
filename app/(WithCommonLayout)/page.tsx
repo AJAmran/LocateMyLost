@@ -1,7 +1,14 @@
-export default function Home() {
+import Landing from "@/components/modules/home/Landing";
+import RecentPost from "@/components/modules/home/RecentPost";
+import React from "react";
+
+const HomePage = () => {
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-      <h1>hello from home page...</h1>
-    </section>
+    <>
+      <Landing />
+      <RecentPost />
+    </>
   );
-}
+};
+
+export default HomePage;
