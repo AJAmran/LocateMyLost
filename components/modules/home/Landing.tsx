@@ -1,6 +1,5 @@
 import { SearchIcon } from "@/components/icons";
 import { Input } from "@nextui-org/input";
-import React from "react";
 
 const Landing = () => {
   return (
@@ -14,11 +13,10 @@ const Landing = () => {
               inputWrapper: "bg-default-100",
               input: "text-sm",
             }}
-            labelPlacement="outside"
             placeholder="Search......"
             size="lg"
             startContent={
-                <SearchIcon className="pointer-events-none flex-shrink-0 text-base text-default-600" />
+              <SearchIcon className="pointer-events-none flex-shrink-0 text-base text-default-600" />
             }
           />
         </form>
