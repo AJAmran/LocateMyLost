@@ -7,24 +7,15 @@ import {
   NavbarItem,
   NavbarMenuItem,
 } from "@nextui-org/navbar";
-import { Button } from "@nextui-org/button";
-import { Kbd } from "@nextui-org/kbd";
+
 import { Link } from "@nextui-org/link";
-import { Input } from "@nextui-org/input";
 import { link as linkStyles } from "@nextui-org/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
-
+import NavbarDropdown from "./NavbarDropdown";
+import { Logo } from "../icons";
 import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/ui/theme-switch";
-import {
-  TwitterIcon,
-  GithubIcon,
-  DiscordIcon,
-  HeartFilledIcon,
-  SearchIcon,
-  Logo,
-} from "@/components/icons";
+import { ThemeSwitch } from "./theme-switch";
 
 export const Navbar = () => {
   return (
@@ -60,6 +51,9 @@ export const Navbar = () => {
       >
         <NavbarItem className="hidden sm:flex gap-2">
           <ThemeSwitch />
+        </NavbarItem>
+        <NavbarItem className="hidden sm:flex gap-2">
+          <NavbarDropdown />
         </NavbarItem>
       </NavbarContent>
 
