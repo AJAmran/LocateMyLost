@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { Avatar } from "@nextui-org/avatar";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function NavbarDropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,22 +15,21 @@ export default function NavbarDropdown() {
 
   return (
     <div className="relative">
-      {/* Avatar Trigger */}
-      <button
+      {/* Dropdown Trigger */}
+      <Avatar
+        className="cursor-pointer"
+        name="Joe"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 cursor-pointer hover:bg-gray-300"
-      >
-        <span className="text-sm font-medium text-gray-800">J</span>
-      </button>
+      />
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+        <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-md ring-1 ring-black ring-opacity-5 z-50">
           <ul className="py-1 text-sm text-gray-700">
             <li>
               <button
                 onClick={() => handleNavigation("/profile")}
-                className="block w-full px-4 py-2 text-left hover:bg-gray-100"
+                className="w-full px-4 py-2 text-left hover:bg-gray-100"
               >
                 Profile
               </button>
@@ -37,7 +37,7 @@ export default function NavbarDropdown() {
             <li>
               <button
                 onClick={() => handleNavigation("/profile/settings")}
-                className="block w-full px-4 py-2 text-left hover:bg-gray-100"
+                className="w-full px-4 py-2 text-left hover:bg-gray-100"
               >
                 Settings
               </button>
@@ -45,7 +45,7 @@ export default function NavbarDropdown() {
             <li>
               <button
                 onClick={() => handleNavigation("/profile/create-post")}
-                className="block w-full px-4 py-2 text-left hover:bg-gray-100"
+                className="w-full px-4 py-2 text-left hover:bg-gray-100"
               >
                 Create Post
               </button>
@@ -53,7 +53,7 @@ export default function NavbarDropdown() {
             <li>
               <button
                 onClick={() => console.log("Logging out")}
-                className="block w-full px-4 py-2 text-left text-red-600 hover:bg-red-100"
+                className="w-full px-4 py-2 text-left text-red-600 hover:bg-red-100"
               >
                 Logout
               </button>
