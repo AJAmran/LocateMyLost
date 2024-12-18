@@ -41,7 +41,7 @@ const AuthForm = <T extends FieldValues>({
   });
 
   return (
-    <div className="flex h-[calc(100vh-200px)] w-full flex-col items-center justify-center bg-gray-100 dark:bg-gray-800">
+    <div className="flex h-[calc(100vh-200px)] w-full flex-col items-center justify-center">
       <h3 className="my-2 text-2xl font-bold text-gray-800 dark:text-gray-200">
         {title}
       </h3>
@@ -65,7 +65,7 @@ const AuthForm = <T extends FieldValues>({
                     : "border-gray-300 dark:border-gray-700"
                 } p-2 focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-800 dark:text-gray-200`}
                 placeholder={field.placeholder}
-                {...register(field.name)} // Correctly typed with Path<T>
+                {...register(field.name)}
               />
               {errors[field.name] && (
                 <p className="mt-1 text-sm text-red-500">
