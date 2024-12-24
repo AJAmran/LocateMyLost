@@ -2,11 +2,23 @@
 import React from "react";
 import registerSchema from "@/schemas/register.schema";
 import AuthForm from "@/components/form/auth.form";
+import { z } from "zod";
+import { registerUser } from "@/services/AuthService";
+
+type RegisterFormData = z.infer<typeof registerSchema>;
 
 const RegisterPage: React.FC = () => {
-  const handleRegister = async (data: any) => {
-    console.log("Registering...", data);
-    alert("Registration successful!");
+  const handleRegister = async (data: RegisterFormData) => {
+    try {
+      console.log("Registering...", data);
+
+      const response = await registerUser(data);
+      alert("Registration successful!");
+      console.log("Server Response", response);
+    } catch (error: any) {
+      alert(error.message || "An error occurred during registration.");
+      console.error("Registration Error:", error);
+    }
   };
 
   return (
@@ -35,7 +47,7 @@ const RegisterPage: React.FC = () => {
           placeholder: "Enter your password",
         },
         {
-          name: "mobile",
+          name: "mobileNumber",
           label: "Mobile Number",
           type: "text",
           placeholder: "Enter your mobile number",

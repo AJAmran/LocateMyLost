@@ -3,6 +3,7 @@ import React from "react";
 import { useForm, SubmitHandler, FieldValues, Path } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodType } from "zod";
+import Link from "next/link";
 
 interface AuthFormProps<T extends FieldValues> {
   schema: ZodType<T>;
@@ -88,12 +89,12 @@ const AuthForm = <T extends FieldValues>({
         </form>
         <div className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
           {redirectText}{" "}
-          <a
+          <Link
             href={redirectLink}
             className="font-medium text-indigo-600 hover:underline"
           >
             {redirectLabel}
-          </a>
+          </Link>
         </div>
       </div>
     </div>
