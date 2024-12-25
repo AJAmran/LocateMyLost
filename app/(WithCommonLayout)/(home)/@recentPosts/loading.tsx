@@ -2,9 +2,8 @@ import CardSkeletion from "@/components/ui/CardSkeleton";
 import Container from "@/components/ui/Container";
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
-import React from "react";
 
-const loading = () => {
+export default async function RecentPosts() {
   return (
     <Container>
       <div className="section-title my-8">
@@ -14,8 +13,8 @@ const loading = () => {
         </p>
       </div>
       <div className="my-8 grid justify-center gap-10 sm:grid-cols-1 md:grid-cols-3">
-        {[...Array(9)].map(() => (
-          <CardSkeletion />
+        {[...Array(9)].map((index) => (
+          <CardSkeletion key={index}/>
         ))}
       </div>
       <div className="flex justify-center">
@@ -25,6 +24,4 @@ const loading = () => {
       </div>
     </Container>
   );
-};
-
-export default loading;
+}
