@@ -4,21 +4,34 @@ import registerSchema from "@/schemas/register.schema";
 import AuthForm from "@/components/form/auth.form";
 import { z } from "zod";
 import { registerUser } from "@/services/AuthService";
+import { useMutation } from "@tanstack/react-query";
 
 type RegisterFormData = z.infer<typeof registerSchema>;
 
 const RegisterPage: React.FC = () => {
-  const handleRegister = async (data: RegisterFormData) => {
-    try {
-      console.log("Registering...", data);
-
-      const response = await registerUser(data);
+  const {
+    mutate: handleUserRagistration,
+    isError,
+    isPending,
+    isSuccess,
+    data: responseData,
+    error,
+  } = useMutation({
+    mutationKey: ["UER_REGISTERATION"],
+    mutationFn: registerUser,
+    onSuccess: (data) => {
       alert("Registration successful!");
-      console.log("Server Response", response);
-    } catch (error: any) {
+      console.log("Server Response", data);
+    },
+    onError: (error) => {
       alert(error.message || "An error occurred during registration.");
       console.error("Registration Error:", error);
-    }
+    },
+  });
+
+  const handleRegister = async (data: RegisterFormData) => {
+    console.log("Registering user with data:", data);
+    handleUserRagistration(data);
   };
 
   return (
